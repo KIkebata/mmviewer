@@ -12,7 +12,7 @@ build:
   noarch: python
   script: {{ PYTHON }} -m pip install . --ignore-installed --no-deps -vv
   entry_points:
-    - mmviewer = mmviwer.__main__:main
+    - mmviewer = mmviewer.__main__:main
 
 requirements:
   host:
