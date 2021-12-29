@@ -1,20 +1,23 @@
-{% set version = "0.0.1" %}
+{% set data = load_setup_py_data() %}
 {% set name = "mmviewer" %}
 
 package:
   name: {{ name }}
-  version: {{ version }}
+  version: {{ data.get('version') }}
 
 source:
-  path: ./mmviewer
+  path: .
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . --ignore-installed --no-deps -vv
+  entry_points:
+    - mmviewer = mmviwer.__main__:main
 
 requirements:
   host:
     - python >=3.7
+    - pip
   run:
     - python >=3.7
     - pyvcf
