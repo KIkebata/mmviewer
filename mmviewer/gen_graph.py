@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.font_manager import FontProperties
 from joblib import Parallel, delayed
-from utility import make_directory, make_dir_files
+from .utility import make_directory, make_dir_files
 import vcf
 from Bio import SeqIO
 

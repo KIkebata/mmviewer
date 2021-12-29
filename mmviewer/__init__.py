@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from __version__ import __version__
+from .__version__ import __version__
 
 __copyright__ = 'Copyright (C) 2022 Kengo Ikebata'
 __license__ = 'GPLv3'

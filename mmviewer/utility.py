@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import os
 from argparse import ArgumentParser
-from __init__ import __version__
+from .__version__ import __version__
 
 def get_option():
     super_argparser = ArgumentParser(

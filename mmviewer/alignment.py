@@ -2,7 +2,7 @@
 import subprocess, os, shutil, glob
 import pandas as pd
 import sys
-from utility import make_directory
+from .utility import make_directory
 
 def bwa_mem_py(ref_fa, sample_names, out_dir, in_fq1_list, in_fq2_list=None):
     """Run bwa mem to generate sorted bam.

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-from get_target import get_target_position
-from alignment import make_alignment
-from utility import get_option
-from gen_graph import gen_graph
-from __init__ import __version__
+from .get_target import get_target_position
+from .alignment import make_alignment
+from .utility import get_option
+from .gen_graph import gen_graph
+from .__version__ import __version__
 
 def main():
     arg_option = get_option()

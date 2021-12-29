@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import subprocess, os, shutil, glob, re
 import pandas as pd
-from utility import make_directory
+from .utility import make_directory
 
 def prodigal_py(in_ref_fa, out_dir):
     """Predict CDS of fasta file
