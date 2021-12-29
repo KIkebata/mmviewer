@@ -2,11 +2,15 @@
 Missense Mutation Viewer
 
 ## Author
-K. Ikebata
+Kengo Ikebata
 
 ## Synopsis
 
-MMViewer make a graph to grab the overview of mutations, especially missense mutations.
+MMViewer can make a graph to grab the overview of mutations, especially missense mutations in CDS.
+This program consists of 3 parts. First part is finding target region, 
+in which it runs blast to find target region on refrence.fasta.
+Second part is mapping, in which it runs bwa mem program to map reads to reference.
+Third part is generating graph, in which it classifies mutations' type and depict graph.
 
 ## Quick Start
 ```
