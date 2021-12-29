@@ -372,6 +372,65 @@ def ref_dict(input_list, input_dict):
         value_list += [input_dict[input_dict['org']==input_list[i]]['new'].values.tolist()[0]]
     return value_list
 
+def gen_legends(out_dir):
+    """generate legends
+
+    :param out_dir: path to output directory
+    :type out_dir: str
+    :return: output file path
+    :rtype: str
+    """
+    out_file = os.path.join(out_dir, 'legends.svg')
+    fig = plt.figure(figsize=(1, 2))
+    ax = fig.add_subplot(111)
+
+    # set xlim and ylim
+    ax.set_xlim(left=20, right=110)
+    ax.set_ylim(bottom=0, top=14)
+
+    # set font properties
+    font = FontProperties(family='serif')
+    font.set_name('Times New Roman')
+
+    # add ticks
+    ax.yaxis.tick_right()
+    ax.set_yticks(np.linspace(1, 13, 7))
+    ax.set_yticklabels(['del', 'ins', 'complex', 'mnp', 'snp', 'Not alighned region', 'CDS'], fontproperties=font)
+    ax.set_xticks([30, 65, 100])
+    ax.set_xticklabels(['30', '65', '100'], fontproperties=font)
+
+    # show labels
+    ax.set_xlabel('Detection frequency [%]', fontproperties=font)
+    
+    # show cds arrow
+    arrow = patches.FancyArrowPatch((30, 13), (100, 13), mutation_scale=10)
+    ax.add_patch(arrow)
+
+    # mark mutations
+    shape_list = ['X', 'P', 'd', 's', '.']
+    yvalue_list = [1, 3, 5, 7, 9]
+    xvalue_list = [30, 65, 100]
+    m_size_list = [(6.0 * 0.3) ** 2, (6.0 * 0.65) ** 2, (6.0 * 1.0) ** 2]
+    m_col = 'red'
+    for i in range(len(yvalue_list)):
+        ax.scatter(
+            x=xvalue_list,
+            y=[yvalue_list[i]] * 3,
+            s=m_size_list,
+            marker=shape_list[i],
+            c=m_col,
+            edgecolor = 'k',
+            linewidth=0.5,
+            alpha=0.5
+        )
+    
+    # show not aligned region
+    rect = patches.Rectangle(xy=(30, 10), width=70, height=2, fc='black', alpha=0.5, linewidth=0.)
+    ax.add_patch(rect)
+
+    fig.savefig(out_file, bbox_inches='tight')
+    return out_file
+
 def make_graph(sample_list, target_bed, filt_snps_csv_files, depth_files, out_dir, min_depth=5):
     """generate graph
 
@@ -563,6 +622,9 @@ def gen_graph(out_dir, graph_config_csv, target_bed, ref_fa, cds_gff, min_depth=
         depth_files=depth_files,
         out_dir=out_dir,
         min_depth=min_depth
+    )
+    legend_file = gen_legends(
+        out_dir=out_dir
     )
     print('Finish.')
     return None
