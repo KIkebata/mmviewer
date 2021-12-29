@@ -1,5 +1,5 @@
 # MMViewer
-Missense Mutation Viewer
+Missense Mutation Viewer (Beta-version)
 
 ## Author
 Kengo Ikebata
