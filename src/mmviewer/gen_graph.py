@@ -395,9 +395,13 @@ def gen_legends(out_dir):
     # add ticks
     ax.yaxis.tick_right()
     ax.set_yticks(np.linspace(1, 13, 7))
-    ax.set_yticklabels(['del', 'ins', 'complex', 'mnp', 'snp', 'Not alighned region', 'CDS'], fontproperties=font)
+    ax.set_yticklabels(['del', 'ins', 'complex', 'mnp', 'snp', 'Not alighned region', 'CDS'])
     ax.set_xticks([30, 65, 100])
-    ax.set_xticklabels(['30', '65', '100'], fontproperties=font)
+    ax.set_xticklabels(['30', '65', '100'])
+    for x_tick_labels in ax.get_xticklabels():
+        x_tick_labels.set_fontproperties(font)
+    for y_tick_labels in ax.get_yticklabels():
+        y_tick_labels.set_fontproperties(font)
 
     # show labels
     ax.set_xlabel('Detection frequency [%]', fontproperties=font)
@@ -490,7 +494,7 @@ def make_graph(sample_list, target_bed, filt_snps_csv_files, depth_files, out_di
 
         # 目盛りの設定
         ax.set_yticks(np.linspace(1, strain_count * 2 + 1, int(strain_count + 1)))
-        ax.set_yticklabels(sample_list[::-1] + ['CDS'], fontproperties=font)
+        ax.set_yticklabels(sample_list[::-1] + ['CDS'])
         ax.set_yticks(np.linspace(0, strain_count * 2 + 2, int(strain_count * 2 + 3)), minor=True)
         ax.get_xaxis().get_major_formatter().set_scientific(False)
         ax.get_xaxis().get_major_formatter().set_useOffset(False)    
@@ -498,6 +502,8 @@ def make_graph(sample_list, target_bed, filt_snps_csv_files, depth_files, out_di
             x_tick_labels.set_rotation(30)
             x_tick_labels.set_fontproperties(font)
             x_tick_labels.set_horizontalalignment('right')
+        for y_tick_labels in ax.get_yticklabels():
+            y_tick_labels.set_fontproperties(font)
 
         # グリッドの表示
         ax.grid(b=True, which='major', axis='x', linestyle='--')

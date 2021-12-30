@@ -139,7 +139,7 @@ def get_bed_from_blast(gff_file, nucl_fa_file, blast_out, anno_fmt, out_dir, f_i
         'chrom':blast_out_df2['seqname'],
         'chromStart':c_start,
         'chromEnd':c_end,
-        'name':blast_out_df2['stitle'],
+        'name':[re.sub(r'[\\|/|:|?|"|<|>|\||\s|\=]', '_', ll) for ll in blast_out_df2['stitle']],
         'score':bed_score,
         'strand':blast_out_df2['strand'],
         'CDS_Start':blast_out_df2['start'] - 1,
