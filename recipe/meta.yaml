@@ -6,13 +6,11 @@ package:
   version: {{ data.get('version') }}
 
 source:
-  path: .
+  path: ..
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . --ignore-installed --no-deps -vv
-  entry_points:
-    - mmviewer = mmviewer.__main__:main
 
 requirements:
   host:
@@ -22,6 +20,7 @@ requirements:
     - python >=3.7
     - pyvcf
     - pandas
+    - numpy
     - bcftools
     - joblib
     - bcftools
@@ -31,3 +30,16 @@ requirements:
     - prodigal
     - blast
     - snpeff
+
+test:
+  commands:
+    - mmviewer -h
+    - mmviewer get_target -h
+    - mmviewer alignment -h
+    - mmviewer gen_graph -h
+
+  about:
+    home: https://github.com/KIkebata/mmviewer
+    license: GPLv3
+    summary: 'A graph showing tools to grasp patern of mutations, especially missense mutations in CDS, from short reads'
+    license_family: GPL
