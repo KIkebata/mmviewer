@@ -26,7 +26,7 @@ requirements:
     - bcftools
     - biopython
     - matplotlib
-    - samtools
+    - samtools =1.9
     - prodigal
     - blast
     - snpeff
