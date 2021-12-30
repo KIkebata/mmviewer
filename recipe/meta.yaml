@@ -30,6 +30,7 @@ requirements:
     - prodigal
     - blast
     - snpeff
+    - bwa
 
 test:
   commands:
