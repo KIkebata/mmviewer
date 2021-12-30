@@ -14,10 +14,10 @@ build:
 
 requirements:
   host:
-    - python >=3.7
+    - python >=3
     - pip
   run:
-    - python >=3.7
+    - python >=3
     - pyvcf
     - pandas
     - numpy
