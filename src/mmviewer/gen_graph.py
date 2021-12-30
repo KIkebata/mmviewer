@@ -460,7 +460,7 @@ def make_graph(sample_list, target_bed, filt_snps_csv_files, depth_files, out_di
     unique_name = list(set(target_df['name'].values.tolist()))
     # グラフへの描画
     strain_count = len(sample_list)
-    svg_dir, svg_files = make_dir_files(dir_name='svg', out_dir=out_dir, prefix_list=unique_name)
+    svg_dir, svg_files = make_dir_files(dir_name='svg', out_dir=out_dir, prefix_list=unique_name, ext='.svg')
     for  i in range(len(unique_name)):
         filt_target_df = target_df[target_df['name'] == unique_name[i]].reset_index(drop=True)
         filt_target_df = filt_target_df.sort_values(by='CDS_Start').reset_index(drop=True)
