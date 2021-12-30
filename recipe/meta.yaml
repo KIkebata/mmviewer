@@ -21,12 +21,11 @@ requirements:
     - pyvcf
     - pandas
     - numpy
-    - bcftools
+    - bcftools =1.10
     - joblib
-    - bcftools
     - biopython
     - matplotlib
-    - samtools =1.9
+    - samtools =1.10
     - prodigal
     - blast
     - snpeff
