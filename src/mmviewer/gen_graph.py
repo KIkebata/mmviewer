@@ -280,7 +280,7 @@ def calc_depth(out_dir, sample_list, bam_files):
     :return: list of depth files (tab-separated)
     :rtype: list
     """
-    depth_dir, depth_files = make_dir_files(dir_name='depth', out_dir=out_dir, prefix_list=sample_list, ext='txt')
+    depth_dir, depth_files = make_dir_files(dir_name='depth', out_dir=out_dir, prefix_list=sample_list, ext='.txt')
     def process(bam_file, depth_file):
         subprocess.run(' '.join([
             'samtools', 'depth', bam_file, '>', depth_file
